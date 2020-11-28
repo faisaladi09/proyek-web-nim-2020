@@ -2,6 +2,110 @@
     <head>
         <body>
             Halaman Mahasiswa..
+            <h3> Edit DATA MAHASISWA</h3>
+
+
+	<?php
+	$host = mysqli_connect("localhost","root","123456","yamanori");
+
+	$id = $_GET['id'];
+	$data = mysqli_query($host,"select * from mahasiswa where idmahasiswa='$id'");
+
+	while($d = mysqli_fetch_array($data)){
+		?>
+		<form method="post" action="update_data.php">
+			<table>
+				<tr>
+					<td>ID</td>
+					<!-- <td><input type="text" name="id" value="<?php echo $d['idmahasiswa']; ?>"></td> -->
+					<td><input type="text" name="id" value="<?php echo $id; ?>"></td>
+				</tr>
+
+				<tr>
+					<td>NIM</td>
+					<td><input type="text" name="nim" value="<?php echo $d['nim']; ?>"></td>
+				</tr>
+
+				<tr>			
+					<td>Nama</td>
+					<td>
+						<input type="text" name="nama" value="<?php echo $d['nama']; ?>">
+					</td>
+				</tr>
+
+				<tr>
+					<td>Tempat Lahir</td>
+					<td>
+						<input type="text" name="tlahir" value="<?php echo $d['tlahir']; ?>">
+					</td>
+				</tr>
+				<tr>
+					<td>Tanggal Lahir</td>
+					<td>
+						<input type="date" name="tlahir" value="<?php echo $d['dlahir']; ?>">
+					</td>
+				</tr>
+
+				<tr>
+				<td>Fakultas</td>
+				<td><input type="text" name="fakultas" value="<?php echo $d['fakultas']; ?>"></td>
+			</tr>
+
+			<tr>
+				<td>Jurusan</td>
+				<td><input type="text" name="jurusan" value="<?php echo $d['jurusan']; ?>"></td>
+			</tr>
+
+			<tr>
+				<td>IPK</td>
+				<td><input type="number" min="0" step=".01" name="ipk" value="<?php echo $d['ipk']; ?>"></td>
+			</tr>
+
+
+
+
+
+				<tr>
+					<td></td>
+					<td style="padding-top: 20px"><input type="submit" value="SIMPAN Pembaharuan"></td>
+				</tr>		
+			</table>
+		</form>
+		<?php 
+	}
+	?>
+
+
+<!-- 
+
+	<form method="post" action="edit_data.php">
+		<table>
+
+
+			<tr>
+				<td>Fakultas</td>
+				<td><input type="text" name="fakultas"></td>
+			</tr>
+
+			<tr>
+				<td>Jurusan</td>
+				<td><input type="text" name="jurusan"></td>
+			</tr>
+
+			<tr>
+				<td>IPK</td>
+				<td><input type="number" min="0" value="0" step=".01" name="ipk"></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="SIMPAN"></td>
+			</tr>	
+		</table>
+	</form>
+
+ -->	
+
         </body>
     </head>
 </html>
